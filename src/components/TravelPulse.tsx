@@ -64,7 +64,7 @@ export default function TravelPulse() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <span className="text-2xl">{item.mood.split(" ")[0]}</span>
-                  <span className="text-xs font-semibold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="text-xs font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded-full flex items-center gap-1">
                     <TrendingUp className="w-3 h-3" />
                     {item.trend}
                   </span>
