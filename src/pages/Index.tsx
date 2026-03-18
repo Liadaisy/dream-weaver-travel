@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Sparkles, MessageCircle, Shuffle, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-travel.jpg";
 import MoodSelector from "@/components/MoodSelector";
+import TravelPulse from "@/components/TravelPulse";
 
 const Index = () => {
   const navigate = useNavigate();
