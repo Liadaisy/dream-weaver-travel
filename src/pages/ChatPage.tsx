@@ -139,7 +139,7 @@ export default function ChatPage() {
             <Sparkles className="w-4 h-4 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-display text-lg text-foreground leading-tight">WanderAI</h1>
+            <h1 className="font-display text-lg text-foreground leading-tight">TripGen AI</h1>
             <p className="text-xs text-muted-foreground">Your AI Travel Buddy</p>
           </div>
         </div>
