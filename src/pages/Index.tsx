@@ -100,6 +100,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Travel Pulse */}
+      <TravelPulse />
+
       {/* Features */}
       <section className="py-20 px-4 bg-secondary/50">
         <div className="max-w-5xl mx-auto">
