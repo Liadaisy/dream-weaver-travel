@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
-import { MapPin, User } from "lucide-react";
+import { Sparkles, User } from "lucide-react";
 import PlaceImage from "./PlaceImage";
 import DirectionsButton from "./DirectionsButton";
 
@@ -39,26 +39,44 @@ export default function ChatMessage({ role, content }: ChatMessageProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`flex gap-3 ${isAssistant ? "" : "flex-row-reverse"}`}
+      transition={{ duration: 0.25 }}
+      className={`flex gap-2.5 ${isAssistant ? "" : "flex-row-reverse"}`}
     >
+      {/* Avatar */}
       <div
-        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-          isAssistant ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground"
-        }`}
-      >
-        {isAssistant ? <MapPin className="w-4 h-4" /> : <User className="w-4 h-4" />}
-      </div>
-      <div
-        className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+        className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center mt-1 ${
           isAssistant
-            ? "bg-card shadow-card border border-border"
-            : "bg-primary text-primary-foreground"
+            ? "gradient-ocean shadow-sm"
+            : "bg-accent shadow-sm"
         }`}
       >
         {isAssistant ? (
-          <div className="prose prose-sm max-w-none text-card-foreground prose-headings:font-display prose-headings:text-card-foreground prose-strong:text-card-foreground prose-p:text-card-foreground">
+          <Sparkles className="w-3.5 h-3.5 text-primary-foreground" />
+        ) : (
+          <User className="w-3.5 h-3.5 text-accent-foreground" />
+        )}
+      </div>
+
+      {/* Bubble */}
+      <div
+        className={`max-w-[85%] rounded-2xl ${
+          isAssistant
+            ? "bg-card/90 backdrop-blur-sm border border-border/60 shadow-card px-4 py-3"
+            : "gradient-sunset text-primary-foreground px-4 py-2.5"
+        }`}
+      >
+        {isAssistant ? (
+          <div className="prose prose-sm max-w-none text-card-foreground
+            prose-headings:font-display prose-headings:text-card-foreground prose-headings:mt-3 prose-headings:mb-1.5 prose-headings:text-base
+            prose-p:text-card-foreground prose-p:my-1 prose-p:text-[13px] prose-p:leading-relaxed
+            prose-strong:text-card-foreground prose-strong:font-semibold
+            prose-ul:my-1 prose-li:my-0 prose-li:text-[13px]
+            prose-table:text-[12px] prose-th:px-2 prose-th:py-1 prose-td:px-2 prose-td:py-1
+            prose-th:bg-secondary/50 prose-th:font-medium prose-th:text-left
+            prose-tr:border-border/40
+          ">
             {parts.map((part, i) => {
               if (part.type === "image") return <PlaceImage key={i} place={part.value} />;
               if (part.type === "directions") return <DirectionsButton key={i} place={part.value} />;
@@ -66,7 +84,7 @@ export default function ChatMessage({ role, content }: ChatMessageProps) {
             })}
           </div>
         ) : (
-          <p className="text-sm">{content}</p>
+          <p className="text-sm leading-relaxed">{content}</p>
         )}
       </div>
     </motion.div>
